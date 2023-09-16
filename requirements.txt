@@ -3,4 +3,4 @@ streamlit==1.26.0
 openai==0.27.6
 qdrant-client==1.5.4
 grpcio-tools
-dotenv
+python-dotenv
