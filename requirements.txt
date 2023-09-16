@@ -2,4 +2,4 @@ langchain==0.0.184
 streamlit==1.18.1
 openai==0.27.6
 qdrant-client==1.5.4
-grpcio-tools==1.58.0
+grpcio-tools
