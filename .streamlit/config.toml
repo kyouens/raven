@@ -1,0 +1,6 @@
+[server]
+# The port where the server will listen for browser connections.
+port = 443
+
+[client]
+toolbarMode = "minimal"

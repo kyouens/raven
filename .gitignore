@@ -1,4 +1,5 @@
 .env
 .venv/*
 utilities/CSV_document_loader.py
-sources/*
+sources/temp/*
+sources/original/*
