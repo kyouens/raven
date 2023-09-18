@@ -4,11 +4,8 @@ import time
 import sqlite3
 from cryptography.fernet import Fernet
 import streamlit as st
-from streamlit_option_menu import option_menu
 from modules.chain import load_chain
 from modules.auth import check_password
-from streamlit_extras.app_logo import add_logo
-
 
 # Load key from environmental variable and initialize Fernet object
 load_dotenv()
@@ -34,6 +31,15 @@ st.set_page_config(
     menu_items=None
 )
 
+# Hide "Made with Streamlit" footer
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 def main_app():
 
     # Initialize LLM chain
@@ -43,7 +49,7 @@ def main_app():
     if 'messages' not in st.session_state:
         # Start with first message from assistant
         st.session_state['messages'] = [
-            {"role": "assistant", "content": "Hi, I'm Raven, your laboratory regulatory assistant. Ask me about lab regulations."},
+            {"role": "assistant", "content": "Hi, I'm Raven, your laboratory regulatory assistant. Ask me about lab regulations!"},
             ]
 
     # Display chat messages from history on app rerun
@@ -61,7 +67,7 @@ def main_app():
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": query})
         # Display user message in chat message container
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar=user_logo):
             st.markdown(query)
 
         with st.chat_message("assistant", avatar=raven_logo):
@@ -105,6 +111,6 @@ def main_app():
                 st.sidebar.warning(f"The file for {source} could not be found.")
 
 # Run if authenticated
-#if check_password():
-main_app()
+if check_password():
+    main_app()
 
