@@ -7,6 +7,16 @@ from langchain.vectorstores import Qdrant
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 
+# This version of the Qdrant storer uses the CharacterTextSplitter to split the text into chunks.
+
+# SPLITTING AND EMBEDDING SETTINGS
+# Chunk size is the maximum size of a single chunk of text that will be sent to OpenAI for embedding.
+# Using tiktoken, we perform the counting using tokens instead of characters.
+chunk_size=2000
+# Chunk overlap is the number of characters that will be repeated between chunks.
+# It helps to maintain context between chunks.
+chunk_overlap=200
+
 print("Loading environment variables...")
 load_dotenv()
 openAI_key = os.environ["OPENAI_API_KEY"]
@@ -19,12 +29,12 @@ loader = CSVLoader(
     file_path="./sources/temp/temporary_checklist_data_ready.csv",
     source_column="Source",
 )
-data = loader.load()
 print("CSV data loaded.")
+# data = loader.load()
 
 print("Running text splitter...")
 documents = loader.load()
-text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=1500, chunk_overlap=200)
+text_splitter = CharacterTextSplitter.from_tiktoken_encoder(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 docs = text_splitter.split_documents(documents)
 print("Text splitting complete.")
 

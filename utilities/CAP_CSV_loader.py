@@ -45,7 +45,7 @@ def process_file(file_path):
     
     # Read cell B2
     cell_B2 = df.at[1, 1]
-    
+
     # Drop the first 6 rows
     df = df.iloc[6:].reset_index(drop=True)
     
@@ -60,9 +60,10 @@ def process_file(file_path):
     
     def concatenate_md_content(row):
         sections = []
+        sections.append(f"### Checklist\n{cell_B2}")
         if not pd.isna(row['Title']):
-            sections.append(f"## {cell_B2}: {row['Title']}")
-        sections.append("### Procedure Required") #Handle procedure required differently
+            sections.append(f"### Subject\n{row['Title']}")
+        sections.append("### Procedure Required") 
         if not pd.isna(row['Procedure Required']):
             sections.append("Yes")
         else:
@@ -84,8 +85,9 @@ def process_file(file_path):
     
     def concatenate_csv_content(row):
         sections = []
+        sections.append(f"### Checklist\n{cell_B2}")
         if not pd.isna(row['Title']):
-            sections.append(f"## {cell_B2}: {row['Title']}")
+            sections.append(f"### Subject\n{row['Title']}")
         if not pd.isna(row['Requirement']):
             sections.append(f"### Requirement\n{row['Requirement']}")
         if not pd.isna(row['Note']):

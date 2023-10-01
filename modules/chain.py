@@ -42,7 +42,7 @@ def load_chain():
         embeddings=embeddings,
         )
 
-    retriever = vector_store.as_retriever(search_kwargs={"k": 3})
+    retriever = vector_store.as_retriever(search_kwargs={"k": 5})
 
     # Create memory 'chat_history' 
     memory = ConversationBufferWindowMemory(k=3,memory_key="chat_history", output_key="answer")
@@ -53,11 +53,10 @@ def load_chain():
     You are given the following extracted text from a list of regulations and a question. 
     Provide a professional and copmlete answer.
     Provide a reference for each assertion you make.
-    If someone thanks you, say 'You are welcome.'.
     If you don't know the answer, just say 'Sorry, I am not sure.'. 
     Don't try to make up an answer.
     If the question is not about laboratory policies or regulations, politely inform them that you are tuned to only answer questions about laboratory regulations.
-    
+
     {context}
     Question: {question}
     Helpful Answer:"""

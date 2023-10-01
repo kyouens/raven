@@ -78,7 +78,7 @@ def main_app():
             sources = [doc.metadata.get("source") for doc in result["source_documents"]]
             full_response = ""
 
-            # Simulate stream of response with milliseconds delay
+            # Simulate streaming reponse
             for chunk in response.split():
                 full_response += chunk + " "
                 time.sleep(0.05)

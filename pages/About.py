@@ -33,7 +33,7 @@ Raven uses a technique known as [retrieval-augmented generation (RAG)](https://a
 ## Technologies
 
 Raven is coded in Python and utilizes open-source or readily available commercial services for its infrastructure and user interface.
-- [OpenAI API](https://platform.openai.com): This API offers an interface to access multiple machine learning models developed by OpenAI, including conversational agents based on the GPT architecture. It enables the incorporation of OpenAI's sophisticated natural language processing into applications, products, or services.
+- [OpenAI API](https://platform.openai.com): This API offers an interface to access multiple machine learning models developed by OpenAI, including conversational agents based on the GPT architecture.
 - [Streamlit](https://streamlit.io): An open-source Python library designed to ease the creation of web apps and data dashboards.
 - [Langchain](https://www.langchain.com): This open-source framework simplifies building applications using LLMs by orchestrating the conversation flow, routing questions to the appropriate natural language processing models, and retrieving answers.
 - [Qdrant](https://qdrant.tech): An open-source vector similarity database and search engine that powers the application's query handling and data retrieval capabilities.
