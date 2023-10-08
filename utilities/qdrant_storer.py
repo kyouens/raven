@@ -26,7 +26,7 @@ print("Environment variables loaded.")
 
 print("Loading CSV data...")
 loader = CSVLoader(
-    file_path="./sources/temp/temporary_checklist_data_ready.csv",
+    file_path="./sources/temp/temporary_regulatory_data_ready.csv",
     source_column="Source",
 )
 print("CSV data loaded.")

@@ -3,3 +3,4 @@
 utilities/CSV_document_loader.py
 sources/temp/*
 sources/original/*
+.DS_Store

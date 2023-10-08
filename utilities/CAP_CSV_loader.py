@@ -14,10 +14,10 @@ def generate_key():
 
 def init_db():
     print("Initializing database...")
-    conn = sqlite3.connect("./sources/SQLite/encrypted_checklist_data.db")
+    conn = sqlite3.connect("./sources/SQLite/encrypted_regulatory_data.db")
     c = conn.cursor()
-    c.execute("DROP TABLE IF EXISTS checklist_data")
-    c.execute('''CREATE TABLE IF NOT EXISTS checklist_data (Source TEXT, Content TEXT)''')
+    c.execute("DROP TABLE IF EXISTS regulatory_data")
+    c.execute('''CREATE TABLE IF NOT EXISTS regulatory_data (Source TEXT, Content TEXT)''')
     conn.commit()
     print("Database initialized.")
     return c, conn
@@ -36,7 +36,7 @@ def process_file(file_path):
 def insert_into_db(cursor, conn, source, content, cipher_suite):
     print(f"Inserting data into database for source: {source}")
     encrypted_content = cipher_suite.encrypt(content.encode())
-    cursor.execute("INSERT INTO checklist_data (Source, Content) VALUES (?, ?)", (source, encrypted_content))
+    cursor.execute("INSERT INTO regulatory_data (Source, Content) VALUES (?, ?)", (source, encrypted_content))
     conn.commit()
 
 def process_file(file_path):
@@ -102,7 +102,7 @@ def process_file(file_path):
 
 def insert_into_db(cursor, conn, source, content, cipher_suite):
     encrypted_content = cipher_suite.encrypt(content.encode())
-    cursor.execute("INSERT INTO checklist_data (Source, Content) VALUES (?, ?)", (source, encrypted_content))
+    cursor.execute("INSERT INTO regulatory_data (Source, Content) VALUES (?, ?)", (source, encrypted_content))
     conn.commit()
 
 def main():
@@ -134,7 +134,7 @@ def main():
     conn.close()
     
     print("Exporting to CSV...")
-    combined_data_csv.to_csv('./sources/temp/temporary_checklist_data_ready.csv')
+    combined_data_csv.to_csv('./sources/temp/temporary_regulatory_data_ready.csv')
     
     print("Script execution completed.")
 

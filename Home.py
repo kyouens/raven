@@ -17,7 +17,7 @@ else:
     raise ValueError("No encryption key found in environmental variables.")
 
 # Initialize SQLite database connection
-with sqlite3.connect("./sources/SQLite/encrypted_checklist_data.db") as conn:
+with sqlite3.connect("./sources/SQLite/encrypted_regulatory_data.db") as conn:
     c = conn.cursor()
 
 # Configure Streamlit page
@@ -98,7 +98,7 @@ def main_app():
         # Display markdown in the sidebar for each source
         for i, source in enumerate(unique_sources):
             # Query database for markdown content based on source
-            c.execute("SELECT Content FROM checklist_data WHERE Source = ?", (source,))
+            c.execute("SELECT Content FROM regulatory_data WHERE Source = ?", (source,))
             encrypted_md_content = c.fetchone()
             
             # If content exists, decrypt and display it
