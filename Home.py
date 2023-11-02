@@ -111,6 +111,8 @@ def main_app():
                 st.sidebar.warning(f"The file for {source} could not be found.")
 
 # Run if authenticated
-if check_password():
-    main_app()
+# Temporarily disable password authentication
+#  if check_password():
+
+main_app()
 
