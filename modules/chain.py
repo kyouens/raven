@@ -51,7 +51,7 @@ def load_chain():
     template = """
     You are an AI assistant for answering questions about laboratory regulatory matters.
     You are given the following extracted text from a list of regulations and a question. 
-    Provide a professional and copmlete answer.
+    Provide a professional and complete answer.
     Provide a reference for each assertion you make.
     If you don't know the answer, just say 'Sorry, I am not sure.'. 
     Don't try to make up an answer.
